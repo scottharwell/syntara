@@ -22,4 +22,4 @@ export const PROJECTS_HELP =
   'Projects that may use this integration. Resources belong to a single project; a project-scoped integration is only available when working in those projects.'
 
 export const HEALTH_CHECK_CREDENTIAL_HELP =
-  'Management credential used for health checks, connection testing, and resource discovery only. Workflow nodes use separate execution credentials configured per integration when a workflow runs.'
+  'Management credential used for health checks, connection testing, and resource discovery only. Workflow steps use separate execution credentials configured per integration when a workflow runs.'

@@ -113,7 +113,7 @@ async def _validate_integration_types(
             if expected and row.integration_type != expected:
                 msg = (
                     f"Integration '{row.name}' is type '{row.integration_type}', "
-                    f"but this node requires type '{expected}'"
+            f"but this step requires type '{expected}'"
                 )
                 raise SafeValueError(msg)
 

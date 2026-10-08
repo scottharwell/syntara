@@ -237,7 +237,7 @@ export const useWorkflowStore: UseWorkflowStoreBound = create<WorkflowStore>()(
               .filter((name): name is string => Boolean(name?.trim()))
           )
 
-          const baseName = `Copy of ${original.name ?? 'Node'}`
+          const baseName = `Copy of ${original.name ?? 'Step'}`
           let uniqueName = baseName
           if (existingNames.has(uniqueName)) {
             let suffix = 2

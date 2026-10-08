@@ -45,7 +45,7 @@ class TestBaseAgentErrorHandling:
         invocation_id = uuid4()
         original_error = TimeoutError("Connection timed out")
         expected_message = (
-            "The AI Agent did not respond in time. Try again, increase the node "
+            "The AI Agent did not respond in time. Try again, increase the step "
             "timeout, or simplify the prompt. If the agent may still be running, "
             "check execution details before re-running."
         )

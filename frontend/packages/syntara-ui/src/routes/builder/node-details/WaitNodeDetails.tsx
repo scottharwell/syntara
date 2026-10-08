@@ -31,7 +31,7 @@ export function WaitNodeDetails({ waitData, nodeId, onClose, onHeaderContentChan
       const totalSeconds = data.duration ?? 0
       if (totalSeconds > maxSeconds) {
         showError({
-          title: 'Cannot save wait node',
+          title: 'Cannot save wait step',
           description: `Wait duration (${totalSeconds}s) exceeds maximum allowed (${maxSeconds}s)`,
         })
         return

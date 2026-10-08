@@ -43,7 +43,7 @@ def _require_int(node_id: str, field: str, value: Any) -> int:  # noqa: ANN401
     try:
         return int(value)
     except (ValueError, TypeError):
-        msg = f"Node {node_id}: parameters field '{field}' must be an integer, got {value!r}"
+        msg = f"Step {node_id}: parameters field '{field}' must be an integer, got {value!r}"
         raise ApplicationError(msg, type="ConfigError", non_retryable=True) from None
 
 

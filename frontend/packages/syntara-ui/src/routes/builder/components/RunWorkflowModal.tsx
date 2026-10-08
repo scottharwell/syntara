@@ -217,7 +217,7 @@ export function RunWorkflowModal({
     <Modal isOpen={isOpen} onClose={onClose} variant="medium" aria-label="Run workflow modal">
       <ModalHeader
         title={`Set mock output data for ${triggerName}`}
-        description="This data will be accessible for downstream nodes."
+        description="This data will be accessible for downstream steps."
       />
       <ModalBody>
         <ExpandableCodeEditor

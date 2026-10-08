@@ -124,7 +124,7 @@ def _check_edge_references_findings(workflow_definition: dict[str, Any], node_id
                 ValidationFinding(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.invalid_reference,
-                    message=f"Edge references non-existent node '{src}'",
+                    message=f"Edge references non-existent step '{src}'",
                     node_id=src,
                 )
             )
@@ -133,7 +133,7 @@ def _check_edge_references_findings(workflow_definition: dict[str, Any], node_id
                 ValidationFinding(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.invalid_reference,
-                    message=f"Edge references non-existent node '{dst}'",
+                    message=f"Edge references non-existent step '{dst}'",
                     node_id=dst,
                 )
             )
@@ -168,7 +168,7 @@ def _check_orphaned_nodes_findings(workflow_definition: dict[str, Any], node_ids
         ValidationFinding(
             severity=ValidationSeverity.error,
             category=ValidationCategory.orphaned_node,
-            message=f"Node '{nid}' is unreachable from any trigger",
+            message=f"Step '{nid}' is unreachable from any trigger",
             node_id=nid,
         )
         for nid in sorted(unreachable)
@@ -222,7 +222,7 @@ def _check_converge_node_findings(
                 ValidationFinding(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.converge_configuration,
-                    message=f"Converge node '{node_id}' has no incoming edges (unreachable synchronization point)",
+                    message=f"Converge step '{node_id}' has no incoming edges (unreachable synchronization point)",
                     node_id=node_id,
                 )
             )
@@ -232,7 +232,7 @@ def _check_converge_node_findings(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.converge_configuration,
                     message=(
-                        f"Converge node '{node_id}' has only 1 incoming branch; "
+                        f"Converge step '{node_id}' has only 1 incoming branch; "
                         f"converge requires at least 2 predecessors"
                     ),
                     node_id=node_id,
@@ -248,7 +248,7 @@ def _check_converge_node_findings(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.converge_configuration,
                     message=(
-                        f"Converge node '{node_id}': n_required ({n_required}) exceeds "
+                        f"Converge step '{node_id}': n_required ({n_required}) exceeds "
                         f"the number of incoming branches ({pred_count})"
                     ),
                     node_id=node_id,
@@ -490,7 +490,7 @@ def collect_scheduled_trigger_config_findings(
                 ValidationFinding(
                     severity=ValidationSeverity.error,
                     category=ValidationCategory.schema_violation,
-                    message=f"Invalid scheduled trigger config for node '{display_id}': {exc}",
+                    message=f"Invalid scheduled trigger config for step '{display_id}': {exc}",
                     node_id=node_id,
                     field_path=field_path,
                 )

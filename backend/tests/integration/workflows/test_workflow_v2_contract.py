@@ -186,7 +186,7 @@ class TestWorkflowGraphConstruction:
         """Graph rejects edges referencing nodes that don't exist."""
         defn = _minimal_workflow()
         defn["edges"].append({"from": "script_1", "to": "ghost_node"})
-        with pytest.raises(ValueError, match="non-existent node"):
+        with pytest.raises(ValueError, match="non-existent step"):
             WorkflowGraph.from_dict(defn)
 
     def test_rejects_workflow_without_trigger(self) -> None:
@@ -211,7 +211,7 @@ class TestWorkflowGraphConstruction:
         defn["nodes"].append(
             {"id": "orphan", "type": "script", "parameters": {"language": "python", "code": "x=1"}},
         )
-        with pytest.raises(ValueError, match="Orphan node"):
+        with pytest.raises(ValueError, match="Orphan step"):
             WorkflowGraph.from_dict(defn)
 
     def test_multi_node_with_condition_and_converge(self) -> None:

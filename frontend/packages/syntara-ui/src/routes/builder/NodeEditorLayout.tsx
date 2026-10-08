@@ -77,7 +77,7 @@ export function NodeEditorLayout({
 }: NodeEditorLayoutProps) {
   const { inputData, outputData } = useNodeExecutionData(nodeId ?? '', executionId, workflowId)
   let closeAriaLabel = 'Cancel without saving'
-  if (readOnly) closeAriaLabel = 'Close node editor'
+  if (readOnly) closeAriaLabel = 'Close step editor'
   else if (mode === 'add') closeAriaLabel = 'Cancel step creation'
 
   return (

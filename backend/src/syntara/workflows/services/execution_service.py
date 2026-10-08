@@ -630,7 +630,7 @@ class ExecutionService(UserReferenceResolverMixin, BaseService):
                 and (not node_output.control or "next_port" not in node_output.control)
             ):
                 msg = (
-                    f"Pre-resolved node '{node_id}' is a {node_def['type']} node "
+                    f"Pre-resolved step '{node_id}' is a {node_def['type']} step "
                     "and requires control.next_port for routing"
                 )
                 raise SafeValueError(msg)
@@ -712,9 +712,9 @@ class ExecutionService(UserReferenceResolverMixin, BaseService):
 
         if target_node_id not in node_ids:
             msg = (
-                f"Target node '{target_node_id}' not found in workflow. "
-                f"Available nodes: {sorted(node_ids)}. "
-                "Note: trigger nodes are not valid test targets."
+                f"Target step '{target_node_id}' not found in workflow. "
+                f"Available steps: {sorted(node_ids)}. "
+                "Note: trigger steps are not valid test targets."
             )
             raise SafeValueError(msg)
 

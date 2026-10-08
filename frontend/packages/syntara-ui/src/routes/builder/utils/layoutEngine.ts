@@ -26,7 +26,7 @@ function isDagreNodeLabel(value: unknown): value is DagreNodeLabel {
 function getNodeLabel(g: Dagre.graphlib.Graph, nodeId: string): DagreNodeLabel {
   const raw: unknown = g.node(nodeId)
   if (!isDagreNodeLabel(raw)) {
-    throw new Error(`Missing Dagre coordinates for node "${nodeId}"`)
+    throw new Error(`Missing Dagre coordinates for step "${nodeId}"`)
   }
   return raw
 }

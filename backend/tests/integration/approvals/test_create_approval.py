@@ -645,7 +645,7 @@ class TestCreateApprovalContract:
             error_type="https://api.example.com/errors/resource-conflict",
             title="Approval Already Requested",
             detail=(
-                "An approval request already exists for this execution and approval node "
+                "An approval request already exists for this execution and approval step "
                 "'duplicate_test_node' with loop_iteration_path []"
             ),
             code="APPROVAL_ALREADY_REQUESTED",

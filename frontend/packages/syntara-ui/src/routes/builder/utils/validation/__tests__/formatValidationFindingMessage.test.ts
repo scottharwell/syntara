@@ -13,9 +13,11 @@ describe('formatValidationFindingMessage', () => {
     ).toBe('Step "Orphan Script" is unreachable from any trigger')
   })
 
-  it('falls back to the original message when name lookup fails', () => {
+  it('uses Step terminology when name lookup fails', () => {
     const message = "Node 'activity_7f0feaf7_abc' is unreachable from any trigger"
-    expect(formatValidationFindingMessage(message, 'activity_7f0feaf7_abc', undefined)).toBe(message)
+    expect(formatValidationFindingMessage(message, 'activity_7f0feaf7_abc', undefined)).toBe(
+      'Step "activity_7f0feaf7_abc" is unreachable from any trigger'
+    )
   })
 
   it('falls back when node id is missing', () => {
@@ -23,9 +25,9 @@ describe('formatValidationFindingMessage', () => {
     expect(formatValidationFindingMessage(message, null, 'Unused')).toBe(message)
   })
 
-  it('leaves message unchanged when name equals id', () => {
+  it('uses Step terminology when name equals id', () => {
     const message = "Node 'script3' is unreachable from any trigger"
-    expect(formatValidationFindingMessage(message, 'script3', 'script3')).toBe(message)
+    expect(formatValidationFindingMessage(message, 'script3', 'script3')).toBe('Step "script3" is unreachable from any trigger')
   })
 
   it('replaces embedded ids in other finding messages without Node prefix', () => {

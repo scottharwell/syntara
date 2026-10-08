@@ -144,8 +144,8 @@ export function validateConvergeInputs(activities: Activity[], edges: EdgeConnec
         message: `Converge "${converge.name ?? converge.id}" receives inputs from both 'Then' and 'Else' branches of condition "${conditionName}". This creates ambiguous execution flow.`,
         nodeIds: [converge.id, conditionId],
         suggestion:
-          'Restructure the workflow so that only one branch of the condition leads to this converge node. ' +
-          'If you need both branches to eventually meet, add intermediate nodes and converge at a point ' +
+          'Restructure the workflow so that only one branch of the condition leads to this converge step. ' +
+          'If you need both branches to eventually meet, add intermediate steps and converge at a point ' +
           'where the branches come from different conditions.',
       })
     }

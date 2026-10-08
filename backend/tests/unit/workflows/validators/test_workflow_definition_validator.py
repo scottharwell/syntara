@@ -226,7 +226,7 @@ class TestEdgeReferences:
             "nodes": [{"id": "n1", "type": "script", "parameters": {"language": "python", "code": "1"}}],
             "edges": [{"from": "ghost", "to": "n1"}],
         }
-        with pytest.raises(SafeValueError, match="non-existent node 'ghost'"):
+        with pytest.raises(SafeValueError, match="non-existent step 'ghost'"):
             validator.validate_workflow_definition(definition)
 
     def test_edge_to_references_nonexistent_node_rejected(self, validator: WorkflowValidator) -> None:
@@ -237,7 +237,7 @@ class TestEdgeReferences:
             "nodes": [{"id": "n1", "type": "script", "parameters": {"language": "python", "code": "1"}}],
             "edges": [{"from": "t1", "to": "missing"}],
         }
-        with pytest.raises(SafeValueError, match="non-existent node 'missing'"):
+        with pytest.raises(SafeValueError, match="non-existent step 'missing'"):
             validator.validate_workflow_definition(definition)
 
 

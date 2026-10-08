@@ -21,11 +21,11 @@ describe('NodeRawDataView Component', () => {
 
     render(<NodeRawDataView node={node} />)
 
-    expect(screen.getByText('Node type')).toBeInTheDocument()
+    expect(screen.getByText('Step type')).toBeInTheDocument()
     expect(screen.getByText('converge')).toBeInTheDocument()
   })
 
-  it('renders Node ID correctly', () => {
+  it('renders Step ID correctly', () => {
     const node: Node<NodeType['data']> = {
       id: 'my-custom-id',
       type: 'parallel',
@@ -35,11 +35,11 @@ describe('NodeRawDataView Component', () => {
 
     render(<NodeRawDataView node={node} />)
 
-    expect(screen.getByText('Node ID')).toBeInTheDocument()
+    expect(screen.getByText('Step ID')).toBeInTheDocument()
     expect(screen.getByText('my-custom-id')).toBeInTheDocument()
   })
 
-  it('renders Node data as formatted JSON', () => {
+  it('renders Step data as formatted JSON', () => {
     const node: Node<NodeType['data']> = {
       id: 'data-test',
       type: 'converge',
@@ -54,7 +54,7 @@ describe('NodeRawDataView Component', () => {
 
     render(<NodeRawDataView node={node} />)
 
-    expect(screen.getByText('Node data')).toBeInTheDocument()
+    expect(screen.getByText('Step data')).toBeInTheDocument()
 
     // Check that the JSON is displayed
     const preElement = screen.getByText(/Test Data/)
@@ -78,7 +78,7 @@ describe('NodeRawDataView Component', () => {
     expect(stepTypeValue).toBeInTheDocument()
   })
 
-  it('uses monospace font for Node ID value', () => {
+  it('uses monospace font for Step ID value', () => {
     const node: Node<NodeType['data']> = {
       id: 'monospace-test',
       type: 'task',
@@ -104,7 +104,7 @@ describe('NodeRawDataView Component', () => {
 
     render(<NodeRawDataView node={node} />)
 
-    expect(screen.getByText('Node data')).toBeInTheDocument()
+    expect(screen.getByText('Step data')).toBeInTheDocument()
     const preElement = screen.getByText('{}')
     expect(preElement).toBeInTheDocument()
   })
@@ -155,6 +155,6 @@ describe('NodeRawDataView Component', () => {
 
     render(<NodeRawDataView node={node} />)
 
-    expect(screen.getByText('Node type')).toBeInTheDocument()
+    expect(screen.getByText('Step type')).toBeInTheDocument()
   })
 })

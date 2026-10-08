@@ -102,7 +102,7 @@ class TestJsonSerialization:
             ValidationFinding(
                 severity=ValidationSeverity.error,
                 category=ValidationCategory.invalid_reference,
-                message="Edge references non-existent node 'ghost'",
+                message="Edge references non-existent step 'ghost'",
                 node_id="ghost",
             ),
         ]
@@ -116,7 +116,7 @@ class TestJsonSerialization:
                 {
                     "severity": "error",
                     "category": "invalid_reference",
-                    "message": "Edge references non-existent node 'ghost'",
+                    "message": "Edge references non-existent step 'ghost'",
                     "node_id": "ghost",
                     "field_path": None,
                 },

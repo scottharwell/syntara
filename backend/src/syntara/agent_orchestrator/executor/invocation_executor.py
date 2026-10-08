@@ -565,7 +565,7 @@ class InvocationExecutor:
     def _wrap_timeout_error(e: Exception, invocation_id: UUID) -> Exception:
         if isinstance(e, TimeoutError):
             return AgentTimeoutError(
-                "The AI Agent did not respond in time. Try again, increase the node timeout, or simplify the prompt.",
+                "The AI Agent did not respond in time. Try again, increase the step timeout, or simplify the prompt.",
                 str(invocation_id),
             )
         return e

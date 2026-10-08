@@ -653,7 +653,7 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         default_value=10000,
         description=(
             "Safety limit that prevents runaway loop execution inside "
-            "workflows. If a loop node exceeds this number of iterations, "
+            "workflows. If a loop step exceeds this number of iterations, "
             "the workflow engine terminates it and the activity fails."
         ),
         helper_text="Minimum 1",
@@ -736,8 +736,8 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         value_type=SettingValueType.INTEGER,
         default_value=2592000,
         description=(
-            "Maximum total duration allowed for wait nodes in workflows. "
-            "If a wait node's configured duration exceeds this limit, "
+            "Maximum total duration allowed for wait steps in workflows. "
+            "If a wait step's configured duration exceeds this limit, "
             "the activity fails with a ConfigError. Admins can adjust "
             "this value based on organizational requirements."
         ),
@@ -768,7 +768,7 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         default_value=86400,
         description=(
             "Default time window (in seconds) the approver has to respond to an approval request. "
-            "Can be overridden per node via the decision_window config field. "
+            "Can be overridden per step via the decision_window config field. "
             "If no decision is received within this period, the approval expires."
         ),
         helper_text="Minimum 1 second. Default: 86400 (24 hours).",
@@ -797,10 +797,10 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         value_type=SettingValueType.INTEGER,
         default_value=86400,
         description=(
-            "Default time (in seconds) a converge node waits for incoming branches to arrive. "
-            "Can be overridden per node via the wait_duration config field. "
-            "When this duration expires, the converge node stops waiting and the workflow "
-            "continues according to the node's continue_on_failure setting."
+            "Default time (in seconds) a converge step waits for incoming branches to arrive. "
+            "Can be overridden per step via the wait_duration config field. "
+            "When this duration expires, the converge step stops waiting and the workflow "
+            "continues according to the step's continue_on_failure setting."
         ),
         helper_text="Minimum 1 second. Default: 86400 (24 hours).",
         group=WorkflowEngineGroup.EXECUTION,
@@ -813,12 +813,12 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         value_type=SettingValueType.BOOLEAN,
         default_value=False,
         description=(
-            "Default continue-on-failure behavior for all nodes that support "
-            "it (executor nodes, loop, converge, approval). When true, "
-            "downstream nodes continue executing even if this node fails. "
-            "Per-node settings override this default."
+            "Default continue-on-failure behavior for all steps that support "
+            "it (executor steps, loop, converge, approval). When true, "
+            "downstream steps continue executing even if this step fails. "
+            "Per-step settings override this default."
         ),
-        helper_text="Default: false. Per-node setting takes priority.",
+        helper_text="Default: false. Per-step setting takes priority.",
         group=WorkflowEngineGroup.EXECUTION,
     ),
     SettingDefinition(
@@ -828,9 +828,9 @@ SETTINGS_CATALOG: list[SettingDefinition] = [
         value_type=SettingValueType.INTEGER,
         default_value=3,
         description=(
-            "Default number of retries after the initial attempt for nodes "
+            "Default number of retries after the initial attempt for steps "
             "with retry_policy enabled. 0 disables retries. Applies to "
-            "executor and approval nodes when no per-node retry_policy is set."
+            "executor and approval steps when no per-step retry_policy is set."
         ),
         helper_text="Minimum 0. Default: 3.",
         group=WorkflowEngineGroup.EXECUTION,

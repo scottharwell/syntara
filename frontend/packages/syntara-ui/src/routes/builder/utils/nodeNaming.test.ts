@@ -31,7 +31,7 @@ describe('nodeNaming', () => {
   })
 
   it('uses random fallback when base name is blank', () => {
-    expect(getNodeDisplayName('')).toBe('Node-00000000')
+    expect(getNodeDisplayName('')).toBe('Step-00000000')
   })
 
   it('keeps current name on edit when unchanged', () => {

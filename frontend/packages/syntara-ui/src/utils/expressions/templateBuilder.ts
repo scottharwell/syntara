@@ -31,7 +31,7 @@ export function canvasNodeIdForExpression(nodeId: string): string {
 function validateNodeId(nodeId: string): string {
   const canvasId = canvasNodeIdForExpression(nodeId)
   if (!SAFE_NODE_ID.test(canvasId)) {
-    throw new Error('Invalid node ID: contains disallowed characters')
+    throw new Error('Invalid step ID: contains disallowed characters')
   }
   return canvasId
 }

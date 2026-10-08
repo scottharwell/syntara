@@ -197,7 +197,7 @@ def resolve_trigger_node(
     for trigger in workflow_def.get("triggers", []):
         if trigger.get("id") == trigger_node_id:
             return trigger_node_id, trigger
-    msg = f"Specified trigger_node_id '{trigger_node_id}' not found in workflow triggers"
+    msg = f"Specified trigger step '{trigger_node_id}' not found in workflow triggers"
     raise SafeValueError(msg)
 
 

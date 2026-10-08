@@ -161,7 +161,7 @@ async def execute_agentic_activity(
 
         if not project_id:
             msg = (
-                "The AI Agent node could not determine the project context. "
+                "The AI Agent step could not determine the project context. "
                 "This is usually a system error. Try re-saving the workflow or contact your administrator."
             )
             raise ApplicationError(msg, type="ConfigError", non_retryable=True)  # noqa: TRY301

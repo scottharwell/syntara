@@ -547,7 +547,7 @@ class ScheduledTriggerService:
         try:
             ScheduledTriggerConfig.model_validate(config)
         except ValidationError as e:
-            msg = f"Invalid scheduled trigger config for node '{trigger_node_id}': {e}"
+            msg = f"Invalid scheduled trigger config for step '{trigger_node_id}': {e}"
             raise TriggerValidationError(msg) from e
 
         settings = get_settings()

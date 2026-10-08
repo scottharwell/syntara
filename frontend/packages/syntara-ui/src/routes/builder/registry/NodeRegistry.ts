@@ -68,7 +68,7 @@ export type NodeTypeDefinition<TFormData = unknown> = {
   /** Optional subtype options */
   subtypes?: NodeSubtypeDefinition<TFormData>[]
 
-  /** Optional selection panel title */
+  /** Heading shown above subtype options in the Add Step panel. */
   selectionTitle?: string
 
   /** Handler function when form is submitted */

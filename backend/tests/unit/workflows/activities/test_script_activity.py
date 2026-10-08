@@ -1187,7 +1187,7 @@ class TestScriptNodesGate:
             assert "APP_SCRIPT_NODES_ENABLED" not in message
             assert "script_nodes_enabled" not in message
             assert "setting" not in message.lower()
-            assert "Script node execution is not enabled" in message
+            assert "Script step execution is not enabled" in message
         finally:
             object.__setattr__(settings, "script_nodes_enabled", True)
 

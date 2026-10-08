@@ -330,9 +330,9 @@ class WorkflowGraph:
         """Validate graph structure and return list of errors.
 
         Checks for:
-        - Edges referencing non-existent nodes
-        - At least one trigger node exists
-        - Orphan nodes (no incoming or outgoing edges, excluding trigger nodes)
+        - Edges referencing non-existent steps
+        - At least one trigger step exists
+        - Orphan steps (no incoming or outgoing edges, excluding trigger steps)
 
         Returns:
             List of validation error messages (empty if valid)
@@ -346,12 +346,12 @@ class WorkflowGraph:
             for edge in self._backend.get_outgoing_edges(node_id):
                 target = edge["to"]
                 if target not in all_node_ids:
-                    errors.append(f"Edge from '{node_id}' references non-existent node '{target}'")
+                    errors.append(f"Edge from '{node_id}' references non-existent step '{target}'")
 
         # Check at least one trigger node exists
         trigger_nodes = self.get_trigger_nodes()
         if not trigger_nodes:
-            errors.append("Graph must contain at least one trigger node")
+            errors.append("Graph must contain at least one trigger step")
 
         # Check for orphan nodes (no incoming or outgoing edges, excluding triggers)
         trigger_ids = {t.id for t in trigger_nodes}
@@ -361,7 +361,7 @@ class WorkflowGraph:
             has_incoming = len(self._backend.get_predecessors(node_id)) > 0
             has_outgoing = len(self._backend.get_successors(node_id)) > 0
             if not has_incoming and not has_outgoing:
-                errors.append(f"Orphan node '{node_id}' has no incoming or outgoing edges")
+                errors.append(f"Orphan step '{node_id}' has no incoming or outgoing edges")
 
         return errors
 

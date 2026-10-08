@@ -506,7 +506,7 @@ class OrchestratorWorkflow(WorkflowConvergeMixin, WorkflowApprovalMixin):
             resolved = self.node_inputs.get(node_id, node.parameters)
             fallback = resolved.get("fallback_decision", "reject")
             if fallback not in {"approve", "reject"}:
-                msg = f"Invalid fallback_decision '{fallback}' on node {node_id}: must be 'approve' or 'reject'"
+                msg = f"Invalid fallback_decision '{fallback}' on step {node_id}: must be 'approve' or 'reject'"
                 raise ApplicationError(msg, type="ConfigError", non_retryable=True)
             port = "approved" if fallback == "approve" else "rejected"
             self.node_control_data[node_id] = {"next_port": port}
@@ -1605,7 +1605,7 @@ class OrchestratorWorkflow(WorkflowConvergeMixin, WorkflowApprovalMixin):
         if node_type == NodeType.LOOP:
             return await self._execute_loop_node(node_id, node, resolved_parameters, timeout_seconds=timeout_seconds)
 
-        return {"output": {"status": "skipped", "reason": f"Unsupported node type: {node_type}"}}
+        return {"output": {"status": "skipped", "reason": f"Unsupported step type: {node_type}"}}
 
     def _process_node_result(self, node: ActivityNode, result: dict[str, Any]) -> dict[str, Any]:
         """Extract control data and output from an activity result."""

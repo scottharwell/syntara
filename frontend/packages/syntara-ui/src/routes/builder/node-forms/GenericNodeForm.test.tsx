@@ -16,7 +16,7 @@ describe('GenericNodeForm', () => {
   it('renders description text and both buttons', () => {
     render(<GenericNodeForm onSubmit={mockOnSubmit} onCancel={mockOnCancel} />)
 
-    expect(screen.getByText(/generic placeholder node/i)).toBeInTheDocument()
+    expect(screen.getByText(/generic placeholder step/i)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /cancel/i })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /add generic step/i })).toBeInTheDocument()
   })

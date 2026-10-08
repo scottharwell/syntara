@@ -26,7 +26,7 @@ def _validate_cases_structure(
     if not cases:
         return "Missing or empty 'cases' in switch parameters"
     if len(cases) > SWITCH_CASES_HARD_LIMIT:
-        return f"Switch node has {len(cases)} cases, exceeding the maximum of {SWITCH_CASES_HARD_LIMIT}"
+        return f"Switch step has {len(cases)} cases, exceeding the maximum of {SWITCH_CASES_HARD_LIMIT}"
     return None
 
 

@@ -228,7 +228,7 @@ async def _validate_integrations(
 
         expected = expected_types.get(row.id)
         if expected and row.integration_type != expected:
-            msg = f"Integration '{row.name}' is type '{row.integration_type}', but this node requires type '{expected}'"
+            msg = f"Integration '{row.name}' is type '{row.integration_type}', but this step requires type '{expected}'"
             raise ApplicationError(msg, type="IntegrationTypeMismatchError", non_retryable=True)
 
 

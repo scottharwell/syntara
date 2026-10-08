@@ -98,8 +98,8 @@ def _resolve_credentials_and_url(
         if extra_vars.get("auth_type") == AUTH_TYPE_URL:
             if config.url:
                 msg = (
-                    "Conflict: node has an explicit URL in parameters and a Secret URL credential attached. "
-                    "Remove the URL from node parameters or use a different credential type."
+                    "Conflict: this step has an explicit URL in parameters and a Secret URL credential attached. "
+                    "Remove the URL from step parameters or use a different credential type."
                 )
                 raise ActivityExecutionError(msg)
             secret_url = extra_vars.get("secret_url", "")
@@ -116,7 +116,7 @@ def _resolve_credentials_and_url(
             _add_credential_auth_headers(headers, extra_vars)
 
     if not request_url:
-        msg = "No URL provided. Set a URL in the node configuration or attach a Secret URL credential."
+        msg = "No URL provided. Set a URL in the step configuration or attach a Secret URL credential."
         raise ApplicationError(msg, type="ConfigurationError", non_retryable=True)
 
     return request_url, url_from_credential

@@ -586,7 +586,7 @@ def resolve_aap_auth(input_config: dict[str, Any], settings: Settings) -> AAPRes
     resolved_integration = input_config.get("_resolved_integration")
 
     if not resolved_integration:
-        msg = "AAP integration not configured. Attach an AAP integration to this node."
+        msg = "AAP integration not configured. Attach an AAP integration to this step."
         raise ApplicationError(msg, type="ConfigError", non_retryable=True)
 
     base_url = resolved_integration["base_url"]

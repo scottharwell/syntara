@@ -339,7 +339,7 @@ export const builderInteractivePages: CanvasPageEntry[] = [
     },
     setup: async (page) => {
       await page.getByRole('button', { name: /Add Step/i }).click()
-      const panel = page.getByRole('region', { name: /add step|select a node/i })
+      const panel = page.getByRole('region', { name: /add step|select a step type/i })
       await expect(panel).toBeVisible()
       // panel.toBeVisible() fires when the slide-in starts — wait for a rendered child
       // so the screenshot doesn't capture a mid-animation state
@@ -451,7 +451,7 @@ export const builderInteractivePages: CanvasPageEntry[] = [
     maskCanvas: false,
     path: AppRoute.WorkflowBuilder.New,
     waitFor: async (page) => {
-      await expect(page.getByRole('heading', { name: 'Select a trigger node' })).toBeVisible({
+      await expect(page.getByRole('heading', { name: 'Select a trigger step type' })).toBeVisible({
         timeout: 30_000,
       })
     },
@@ -474,7 +474,7 @@ export const builderInteractivePages: CanvasPageEntry[] = [
     maskCanvas: false,
     path: AppRoute.WorkflowBuilder.New,
     waitFor: async (page) => {
-      await expect(page.getByRole('heading', { name: 'Select a trigger node' })).toBeVisible({
+      await expect(page.getByRole('heading', { name: 'Select a trigger step type' })).toBeVisible({
         timeout: 30_000,
       })
     },

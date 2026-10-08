@@ -515,8 +515,8 @@ class WorkflowService(UserReferenceResolverMixin, BaseService):
             if extra_vars.get("auth_type") == AUTH_TYPE_URL:
                 node_name = suspect[str(cred_id)]
                 msg = (
-                    f"Node '{node_name}' has both an explicit URL and a Secret URL credential. "
-                    "Remove the URL from node parameters or use a different credential type."
+                    f"Step '{node_name}' has both an explicit URL and a Secret URL credential. "
+                    "Remove the URL from step parameters or use a different credential type."
                 )
                 raise SafeValueError(msg)
 

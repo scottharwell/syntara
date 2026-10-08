@@ -229,7 +229,7 @@ class WebhookTriggerService(BaseService):
             try:
                 validated = WebhookTriggerParameters.model_validate(parameters)
             except ValidationError as e:
-                msg = f"Invalid webhook trigger parameters for node '{node_id}': {e}"
+                msg = f"Invalid webhook trigger parameters for step '{node_id}': {e}"
                 raise TriggerValidationError(msg) from e
 
             if node_id in existing_triggers:

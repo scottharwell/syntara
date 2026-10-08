@@ -11,15 +11,14 @@ export function formatValidationFindingMessage(
   nodeId: string | null,
   nodeName: string | undefined
 ): string {
-  if (!nodeId || !nodeName || nodeName === nodeId) {
-    return message
+  let formatted = message
+  if (nodeId && nodeName && nodeName !== nodeId && formatted.includes(nodeId)) {
+    formatted = formatted.split(nodeId).join(nodeName)
   }
 
-  let formatted = message.includes(nodeId) ? message.split(nodeId).join(nodeName) : message
-
-  const nodeQuoted = `Node '${nodeName}'`
-  if (formatted.startsWith(nodeQuoted)) {
-    formatted = `Step "${nodeName}"${formatted.slice(nodeQuoted.length)}`
+  const nodeMatch = /^(?:Node|Step) '([^']+)'/i.exec(formatted)
+  if (nodeMatch) {
+    formatted = `Step "${nodeMatch[1]}"${formatted.slice(nodeMatch[0].length)}`
   }
 
   return formatted

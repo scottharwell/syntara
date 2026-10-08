@@ -235,7 +235,7 @@ export function useNodeDeletion({
               // SECURITY: Break immediately if loop body exceeds total node count (cycle detected)
               if (loopBodyNodes.size > totalNodeCount) {
                 throw new Error(
-                  `Loop body size (${loopBodyNodes.size}) exceeds total node count (${totalNodeCount}). ` +
+                  `Loop body size (${loopBodyNodes.size}) exceeds total step count (${totalNodeCount}). ` +
                     `The workflow graph contains unexpected cycles. Please check your workflow structure.`
                 )
               }

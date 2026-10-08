@@ -132,7 +132,7 @@ class BaseAgent(ABC):
         # Handle timeout errors (orchestrator/LLM timeout — distinct from Temporal StartToClose)
         if isinstance(error, TimeoutError):
             msg = (
-                "The AI Agent did not respond in time. Try again, increase the node "
+                "The AI Agent did not respond in time. Try again, increase the step "
                 "timeout, or simplify the prompt. If the agent may still be running, "
                 "check execution details before re-running."
             )

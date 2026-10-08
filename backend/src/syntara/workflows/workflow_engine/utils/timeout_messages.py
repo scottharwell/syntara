@@ -35,6 +35,6 @@ def build_timeout_error_message(
         "Increase the timeout, simplify the prompt, or try again. "
         "If the agent may still be running, check execution details before re-running."
         if is_agentic
-        else "Increase the timeout in the node settings, or try again."
+        else "Increase the timeout in the step settings, or try again."
     )
-    return f"{step_label} did not finish within {timeout_friendly} (configured in the node Timeout setting). {guidance}"
+    return f"{step_label} did not finish within {timeout_friendly} (configured in the step Timeout setting). {guidance}"

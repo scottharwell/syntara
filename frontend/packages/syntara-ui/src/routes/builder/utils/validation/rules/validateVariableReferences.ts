@@ -89,9 +89,9 @@ function checkNodeReference(
       id: `var-ref-node-${activity.id}-${ref.namespace}`,
       severity: 'error',
       rule: 'variable-references',
-      message: `Step "${stepName}" references \${${ref.fullRef}} but node or trigger "${ref.namespace}" does not exist in this workflow`,
+      message: `Step "${stepName}" references \${${ref.fullRef}} but step or trigger "${ref.namespace}" does not exist in this workflow`,
       nodeId: activity.id,
-      suggestion: 'Check the node ID for typos, or add the referenced node to the workflow',
+      suggestion: 'Check the step ID for typos, or add the referenced step to the workflow',
     }
   }
   if (!upstreamIds.has(ref.namespace)) {
@@ -99,9 +99,9 @@ function checkNodeReference(
       id: `var-ref-upstream-${activity.id}-${ref.namespace}`,
       severity: 'error',
       rule: 'variable-references',
-      message: `Step "${stepName}" references \${${ref.fullRef}} but node "${ref.namespace}" is not upstream of this step`,
+      message: `Step "${stepName}" references \${${ref.fullRef}} but step "${ref.namespace}" is not upstream of this step`,
       nodeId: activity.id,
-      suggestion: 'Only nodes that execute before this step can provide output data. Check the workflow connections',
+      suggestion: 'Only steps that execute before this step can provide output data. Check the workflow connections',
     }
   }
   return null

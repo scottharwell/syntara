@@ -71,8 +71,8 @@ class TestScriptNodeGateDisabled:
         )
 
         error_text = str(result.error_details or "")
-        assert "Script node execution is not enabled" in error_text, (
-            f"Expected 'Script node execution is not enabled' in error_details, got: {error_text}"
+        assert "Script step execution is not enabled" in error_text, (
+            f"Expected 'Script step execution is not enabled' in error_details, got: {error_text}"
         )
 
     def test_failure_visible_in_activity_history(self, syntara_api: SyntaraApiRegistry) -> None:
@@ -93,7 +93,7 @@ class TestScriptNodeGateDisabled:
         assert script_activity.status == "failed", f"script_node should be failed, got: {script_activity.status}"
 
         activity_error = str(getattr(script_activity, "error_details", None) or "")
-        assert "Script node execution is not enabled" in activity_error, (
+        assert "Script step execution is not enabled" in activity_error, (
             f"Expected error details on script activity, got: {activity_error}"
         )
 

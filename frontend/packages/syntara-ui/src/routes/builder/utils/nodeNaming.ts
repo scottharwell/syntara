@@ -25,7 +25,7 @@ function generateRandomSuffix(): string {
 function makeUniqueName(baseName: string, existingNames: string[]): string {
   const normalizedBaseName = baseName.trim()
   if (!normalizedBaseName) {
-    return `Node-${generateRandomSuffix()}`
+    return `Step-${generateRandomSuffix()}`
   }
 
   const existingSet = new Set(existingNames)

@@ -1230,7 +1230,7 @@ class TestHandleNodeFailureBareApplicationError:
         graph = _build_approval_graph()
 
         error = ApplicationError(
-            "Approval node 'approval' received invalid decision 'cancelled'",
+            "Approval step 'approval' received invalid decision 'cancelled'",
             type="InvalidApprovalDecisionError",
             non_retryable=True,
         )

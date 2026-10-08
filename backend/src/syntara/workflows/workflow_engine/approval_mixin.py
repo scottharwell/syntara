@@ -344,8 +344,8 @@ class WorkflowApprovalMixin:
         approved_successors = graph.get_next_activities_by_port(node.id, "approved")
         if not approved_successors:
             msg = (
-                f"Approval node '{node.id}' has no approved successor. "
-                "Approval nodes require at least one successor on the 'approved' output."
+                f"Approval step '{node.id}' has no approved successor. "
+                "Approval steps require at least one successor on the 'approved' output."
             )
             raise SafeValueError(msg)
         first_approved = approved_successors[0]
@@ -464,7 +464,7 @@ class WorkflowApprovalMixin:
         )
         output = approval_output.model_dump(exclude_none=True)
         if decision not in ("approved", "rejected"):
-            msg = f"Approval node '{node_id}' received invalid decision '{decision}': expected 'approved' or 'rejected'"
+            msg = f"Approval step '{node_id}' received invalid decision '{decision}': expected 'approved' or 'rejected'"
             raise ApplicationError(
                 msg,
                 {"output": output},

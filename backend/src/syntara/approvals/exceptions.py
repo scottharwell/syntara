@@ -52,7 +52,7 @@ class ApprovalAlreadyRequestedError(ApprovalError):
         self.loop_iteration_path = [*loop_iteration_path] if loop_iteration_path is not None else []
         super().__init__(
             "Approval request already exists for execution "
-            f"{execution_id}, approval node '{approval_node_id}', "
+            f"{execution_id}, approval step '{approval_node_id}', "
             f"loop_iteration_path={self.loop_iteration_path}"
         )
 

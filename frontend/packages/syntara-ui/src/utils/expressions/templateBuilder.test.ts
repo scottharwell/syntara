@@ -57,7 +57,7 @@ describe('buildExpression', () => {
         nodeId: 'step.with.dots',
         fieldPath: ['field'],
       })
-    ).toThrow('Invalid node ID: contains disallowed characters')
+    ).toThrow('Invalid step ID: contains disallowed characters')
   })
 
   it('throws error for field path with dots', () => {

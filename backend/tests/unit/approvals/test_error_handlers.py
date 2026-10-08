@@ -265,7 +265,7 @@ class TestApprovalAlreadyRequestedHandler:
         assert data["type"] == PROBLEM_TYPES["resource_conflict"]
         assert data["title"] == "Approval Already Requested"
         assert data["detail"] == (
-            "An approval request already exists for this execution and approval node "
+            "An approval request already exists for this execution and approval step "
             f"'{approval_node_id}' with loop_iteration_path []"
         )
         assert data["code"] == "APPROVAL_ALREADY_REQUESTED"

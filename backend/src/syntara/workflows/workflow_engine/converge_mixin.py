@@ -185,7 +185,7 @@ class WorkflowConvergeMixin:
             failed_preds = [p for p in predecessor_ids if p in self.failed_nodes and p not in self._cof_failed_nodes]
             if failed_preds:
                 error_msg = (
-                    f"Converge node {converge_id}: predecessor(s) "
+                    f"Converge step {converge_id}: predecessor(s) "
                     f"{', '.join(failed_preds)} failed, "
                     f"ALL strategy requires every branch to succeed"
                 )
@@ -194,7 +194,7 @@ class WorkflowConvergeMixin:
 
             if upstream_failure_id and upstream_failure_id not in self._cof_failed_nodes:
                 error_msg = (
-                    f"Converge node {converge_id}: upstream node "
+                    f"Converge step {converge_id}: upstream step "
                     f"{upstream_failure_id} failed, "
                     f"ALL strategy requires every branch to succeed"
                 )
@@ -205,7 +205,7 @@ class WorkflowConvergeMixin:
             n_req = converge_node.parameters.get("n_required", "?")
             successes = self._count_successful_predecessors(predecessor_ids)
             error_msg = (
-                f"Converge node {converge_id}: required {n_req} successful branches, "
+                f"Converge step {converge_id}: required {n_req} successful branches, "
                 f"got {successes} (failures excluded)"
             )
             self._fail_converge_node(converge_id, error_msg, graph, pending_tasks)
@@ -344,7 +344,7 @@ class WorkflowConvergeMixin:
                 timed_out = True
 
             if timed_out:
-                error_msg = f"Converge node {node_id} timed out after {timeout_seconds}s waiting for predecessors"
+                error_msg = f"Converge step {node_id} timed out after {timeout_seconds}s waiting for predecessors"
                 workflow.logger.error(error_msg)
                 self._fail_converge_node(node_id, error_msg, graph, pending_tasks)
         except Exception as exc:  # noqa: BLE001

@@ -61,7 +61,7 @@ async def get_openrouter_llm(
 
     """
     if not api_key:
-        error_msg = "No LLM API key available. Attach an LLM Provider credential to the workflow's agentic node."
+        error_msg = "No LLM API key available. Attach an LLM Provider credential to the workflow's agentic step."
         raise LLMConfigurationError(error_msg)
 
     settings = get_settings()

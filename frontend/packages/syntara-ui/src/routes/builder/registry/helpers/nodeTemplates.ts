@@ -25,7 +25,7 @@ type NodeConfig<TFormData = unknown> = {
   formComponent: ComponentType<BaseNodeFormProps<TFormData> & Record<string, unknown>>
   /** Optional subtype options */
   subtypes?: NodeSubtypeDefinition<TFormData>[]
-  /** Optional selection panel title */
+  /** Heading shown above subtype options in the Add Step panel. */
   selectionTitle?: string
   /** Whether this node type is enabled (default: true) */
   enabled?: boolean
