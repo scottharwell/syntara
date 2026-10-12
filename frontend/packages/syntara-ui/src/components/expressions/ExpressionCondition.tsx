@@ -43,7 +43,7 @@ function isValidVariableRef(value: string): boolean {
   const arrayIndices = value.match(ARRAY_INDEX_PATTERN) ?? []
   const hasInvalidArrayIndex = arrayIndices.some((index) => {
     const numericIndex = Number(index.slice(1, -1))
-    return numericIndex < 1 || numericIndex > MAX_ARRAY_INDEX
+    return numericIndex < 0 || numericIndex > MAX_ARRAY_INDEX
   })
   if (hasInvalidArrayIndex) return false
   const pathSegments = value.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) ?? []
@@ -143,7 +143,7 @@ export function ExpressionCondition(props: ExpressionConditionProps) {
     const stripped = editingValue.replace(/^\$\{/, '').replace(/\}$/, '')
     if (stripped && !isValidVariableRef(stripped)) {
       setLocalFieldError(
-        'Invalid variable name. Use dotted fields and positive bracketed integer indexes from 1 to 999999, e.g. trigger.impactedEntities[1].name.'
+        'Invalid variable name. Use dotted fields and bracketed integer indexes from 0 to 999999, e.g. trigger.impactedEntities[0].name.'
       )
       return
     }
