@@ -33,11 +33,18 @@ import { SynSelect } from '../SynSelect'
 import { HelpPopover } from './HelpPopover'
 
 const MAX_VARIABLE_LENGTH = 256
+const MAX_ARRAY_INDEX_MAGNITUDE = 999_999
 const VARIABLE_PATTERN = /^[a-zA-Z_][a-zA-Z0-9_]*(?:\.[a-zA-Z_][a-zA-Z0-9_]*|\[-?\d+\])*$/
+const ARRAY_INDEX_PATTERN = /\[-?\d+\]/g
 const RESERVED_NAMES = ['__proto__', 'constructor', 'prototype']
 
 function isValidVariableRef(value: string): boolean {
   if (value.length > MAX_VARIABLE_LENGTH || !VARIABLE_PATTERN.test(value)) return false
+  const arrayIndices = value.match(ARRAY_INDEX_PATTERN) ?? []
+  const hasOutOfRangeArrayIndex = arrayIndices.some(
+    (index) => Math.abs(Number(index.slice(1, -1))) > MAX_ARRAY_INDEX_MAGNITUDE
+  )
+  if (hasOutOfRangeArrayIndex) return false
   const pathSegments = value.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) ?? []
   return !pathSegments.some((part) => RESERVED_NAMES.includes(part))
 }
@@ -135,7 +142,7 @@ export function ExpressionCondition(props: ExpressionConditionProps) {
     const stripped = editingValue.replace(/^\$\{/, '').replace(/\}$/, '')
     if (stripped && !isValidVariableRef(stripped)) {
       setLocalFieldError(
-        'Invalid variable name. Use dotted fields and bracketed integers, e.g. trigger.impactedEntities[0].name.'
+        'Invalid variable name. Use dotted fields and bracketed integer indexes from -999999 to 999999, e.g. trigger.impactedEntities[0].name.'
       )
       return
     }
